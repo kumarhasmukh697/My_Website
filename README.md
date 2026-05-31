@@ -99,4 +99,4 @@ The repository already contains a `.env` example with placeholders. Keep that fi
 
 ---
 
-_This README was generated from the project files. If you'd like any wording changes, screenshots, badges, or extra sections (CI, Docker, deployment scripts), tell me what to include and I will update the README._
+
