@@ -1,0 +1,39 @@
+/* Local Bootstrap Icons font used only to preserve the original visual iconography. */
+@font-face {
+  font-family: "Bootstrap Icons";
+  src: url("../fonts/bootstrap-icons.woff2") format("woff2"),
+       url("../fonts/bootstrap-icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.bi::before {
+  display: inline-block;
+  font-family: "Bootstrap Icons" !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bi-arrow-up-short::before { content: "\f145"; }
+.bi-bar-chart::before { content: "\f17e"; }
+.bi-chevron-right::before { content: "\f285"; }
+.bi-envelope::before { content: "\f32f"; }
+.bi-file-earmark-text::before { content: "\f38b"; }
+.bi-github::before { content: "\f3ed"; }
+.bi-house::before { content: "\f425"; }
+.bi-images::before { content: "\f42b"; }
+.bi-instagram::before { content: "\f437"; }
+.bi-link-45deg::before { content: "\f470"; }
+.bi-linkedin::before { content: "\f472"; }
+.bi-list::before { content: "\f479"; }
+.bi-person::before { content: "\f4e1"; }
+.bi-telephone::before { content: "\f5c1"; }
+.bi-x::before { content: "\f62a"; }
+.bi-zoom-in::before { content: "\f62c"; }

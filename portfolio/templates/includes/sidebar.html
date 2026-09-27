@@ -1,0 +1,30 @@
+{% load static %}
+<header id="header" class="header dark-background d-flex flex-column">
+    <button type="button" class="header-toggle d-xl-none" aria-label="Open menu"><i class="bi bi-list"></i></button>
+
+    <div class="profile-img">
+      <img src="{% static 'assets/img/my-profile-img.jpg' %}" alt="" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">Hasmukh Kumar</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="https://www.instagram.com/kumarhasmukh697" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://linkedin.com/in/hasmukh-kumar-a20a4a233" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/kumarhasmukh697" class="github"><i class="bi bi-github"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Projects</a></li>
+        <li><a href="#skills"><i class="bi bi-bar-chart navicon"></i> Skills</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+  </header>

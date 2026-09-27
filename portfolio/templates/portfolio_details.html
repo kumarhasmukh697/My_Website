@@ -1,0 +1,812 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_content %}
+
+<main class="main">
+
+    <!-- =========================
+         Page Title
+    ========================== -->
+    <div class="page-title dark-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+
+            <div>
+                <h1 class="mb-2 mb-lg-0">Project Details</h1>
+                <p class="page-subtitle mb-0">
+                    Explore the project, technologies, source code and live application.
+                </p>
+            </div>
+
+            <nav class="breadcrumbs">
+                <ol>
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="current">Project Details</li>
+                </ol>
+            </nav>
+
+        </div>
+    </div>
+
+
+    <!-- =========================
+         Project Details
+    ========================== -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+        <div class="container">
+
+            <div class="project-details-wrapper">
+
+                <div class="row g-4 g-lg-5 align-items-start">
+
+                    <!-- =========================
+                         LEFT: PROJECT IMAGES
+                    ========================== -->
+                    <div class="col-lg-7">
+
+                        <div class="project-gallery">
+
+                            <div class="portfolio-details-slider swiper init-swiper">
+
+                                <div class="swiper-wrapper">
+
+                                    {% for image in images %}
+
+                                    <div class="swiper-slide">
+
+                                        <div class="project-image-container">
+
+                                            <img
+                                                src="{{ image.image.url }}"
+                                                alt="{{ project.title }}"
+                                                class="project-main-image"
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                    {% empty %}
+
+                                    <div class="swiper-slide">
+
+                                        <div class="project-image-container no-image">
+
+                                            <i class="bi bi-image"></i>
+
+                                            <p>No project image available</p>
+
+                                        </div>
+
+                                    </div>
+
+                                    {% endfor %}
+
+                                </div>
+
+                                <!-- Pagination -->
+                                <div class="swiper-pagination"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         RIGHT: PROJECT INFORMATION
+                    ========================== -->
+                    <div class="col-lg-5">
+
+                        <div class="project-sidebar">
+
+                            <!-- Project Header -->
+                            <div class="project-header">
+
+                                <span class="project-label">
+                                    Featured Project
+                                </span>
+
+                                <h2>
+                                    {{ project.title }}
+                                </h2>
+
+                                <p>
+                                    {{ project.description }}
+                                </p>
+
+                            </div>
+
+
+                            <!-- Project Information Card -->
+                            <div class="project-info-card">
+
+                                <h3>
+                                    <i class="bi bi-info-circle"></i>
+                                    Project Information
+                                </h3>
+
+
+                                <!-- Title -->
+                                <div class="info-item">
+
+                                    <div class="info-icon">
+                                        <i class="bi bi-folder"></i>
+                                    </div>
+
+                                    <div class="info-content">
+
+                                        <span>Project</span>
+
+                                        <strong>
+                                            {{ project.title }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Technologies -->
+                                <div class="info-item">
+
+                                    <div class="info-icon">
+                                        <i class="bi bi-code-slash"></i>
+                                    </div>
+
+                                    <div class="info-content">
+
+                                        <span>Technologies</span>
+
+                                        <strong>
+                                            {{ project.tech_stack }}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- GitHub -->
+                                <div class="info-item">
+
+                                    <div class="info-icon">
+                                        <i class="bi bi-github"></i>
+                                    </div>
+
+                                    <div class="info-content">
+
+                                        <span>Source Code</span>
+
+                                        <a
+                                            href="{{ project.github_link }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            View GitHub Repository
+                                            <i class="bi bi-arrow-up-right"></i>
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Live Project -->
+                                <div class="info-item">
+
+                                    <div class="info-icon">
+                                        <i class="bi bi-globe"></i>
+                                    </div>
+
+                                    <div class="info-content">
+
+                                        <span>Live Project</span>
+
+                                        <a
+                                            href="{{ project.link }}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Visit Live Website
+                                            <i class="bi bi-arrow-up-right"></i>
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Action Buttons -->
+                            <div class="project-actions">
+
+                                {% if project.github_link %}
+
+                                <a
+                                    href="{{ project.github_link }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="project-btn github-btn"
+                                >
+                                    <i class="bi bi-github"></i>
+                                    View Source Code
+                                </a>
+
+                                {% endif %}
+
+
+                                {% if project.link %}
+
+                                <a
+                                    href="{{ project.link }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="project-btn live-btn"
+                                >
+                                    <i class="bi bi-box-arrow-up-right"></i>
+                                    View Live Project
+                                </a>
+
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     PROJECT DESCRIPTION
+                ========================== -->
+                <div class="project-description-section">
+
+                    <div class="description-header">
+
+                        <span class="section-label">
+                            About The Project
+                        </span>
+
+                        <h2>
+                            Project Overview
+                        </h2>
+
+                    </div>
+
+                    <div class="description-content">
+
+                        <p>
+                            {{ project.description }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CUSTOM STYLES
+    ========================== -->
+
+    <style>
+
+        /* --------------------------------
+           Main Wrapper
+        -------------------------------- */
+
+        .project-details-wrapper {
+            width: 100%;
+        }
+
+
+        /* --------------------------------
+           Gallery
+        -------------------------------- */
+
+        .project-gallery {
+            width: 100%;
+        }
+
+        .portfolio-details-slider {
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+
+        .project-image-container {
+            width: 100%;
+            height: 520px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f7f8fa;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            padding: 25px;
+        }
+
+
+        .project-main-image {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            border-radius: 12px;
+
+            transition: transform 0.4s ease;
+        }
+
+
+        .project-image-container:hover .project-main-image {
+            transform: scale(1.02);
+        }
+
+
+        /* No image */
+
+        .no-image {
+            flex-direction: column;
+            color: #888;
+        }
+
+        .no-image i {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+
+        /* --------------------------------
+           Swiper
+        -------------------------------- */
+
+        .portfolio-details-slider .swiper-button-prev,
+        .portfolio-details-slider .swiper-button-next {
+            width: 42px;
+            height: 42px;
+
+            background: rgba(0, 0, 0, 0.55);
+
+            border-radius: 50%;
+
+            color: #fff;
+
+            transition: 0.3s ease;
+        }
+
+        .portfolio-details-slider .swiper-button-prev:hover,
+        .portfolio-details-slider .swiper-button-next:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .portfolio-details-slider .swiper-button-prev::after,
+        .portfolio-details-slider .swiper-button-next::after {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+
+        .portfolio-details-slider .swiper-pagination {
+            bottom: 15px;
+        }
+
+
+        /* --------------------------------
+           Sidebar
+        -------------------------------- */
+
+        .project-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+
+        /* --------------------------------
+           Project Header
+        -------------------------------- */
+
+        .project-header {
+            margin-bottom: 25px;
+        }
+
+
+        .project-label,
+        .section-label {
+            display: inline-block;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+
+            opacity: 0.75;
+        }
+
+
+        .project-header h2 {
+            font-size: 34px;
+            font-weight: 700;
+
+            line-height: 1.2;
+
+            margin-bottom: 15px;
+        }
+
+
+        .project-header p {
+            font-size: 15px;
+            line-height: 1.7;
+
+            margin-bottom: 0;
+
+            opacity: 0.75;
+        }
+
+
+        /* --------------------------------
+           Information Card
+        -------------------------------- */
+
+        .project-info-card {
+
+            background: #fff;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.06);
+
+            margin-bottom: 22px;
+        }
+
+
+        .project-info-card h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 22px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+
+        .project-info-card h3 i {
+            font-size: 20px;
+        }
+
+
+        /* --------------------------------
+           Info Items
+        -------------------------------- */
+
+        .info-item {
+
+            display: flex;
+
+            gap: 15px;
+
+            padding: 16px 0;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+
+        .info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+
+        .info-item:first-of-type {
+            padding-top: 0;
+        }
+
+
+        .info-icon {
+
+            min-width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: rgba(0, 0, 0, 0.05);
+
+            font-size: 18px;
+        }
+
+
+        .info-content {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+            min-width: 0;
+        }
+
+
+        .info-content span {
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.6px;
+
+            opacity: 0.6;
+        }
+
+
+        .info-content strong {
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            word-break: break-word;
+        }
+
+
+        .info-content a {
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            word-break: break-word;
+        }
+
+
+        .info-content a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* --------------------------------
+           Action Buttons
+        -------------------------------- */
+
+        .project-actions {
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .project-btn {
+
+            flex: 1;
+
+            min-width: 180px;
+
+            padding: 13px 18px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: all 0.3s ease;
+
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+
+        .github-btn {
+
+            background: #111;
+
+            color: #fff;
+        }
+
+
+        .github-btn:hover {
+
+            background: #222;
+
+            color: #fff;
+
+            transform: translateY(-2px);
+        }
+
+
+        .live-btn {
+
+            background: transparent;
+
+            color: inherit;
+        }
+
+
+        .live-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* --------------------------------
+           Description
+        -------------------------------- */
+
+        .project-description-section {
+
+            margin-top: 65px;
+
+            padding-top: 45px;
+
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+
+        .description-header h2 {
+
+            font-size: 30px;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+
+        .description-content {
+
+            max-width: 900px;
+        }
+
+
+        .description-content p {
+
+            font-size: 16px;
+
+            line-height: 1.9;
+
+            margin: 0;
+
+            opacity: 0.78;
+        }
+
+
+        /* --------------------------------
+           Responsive
+        -------------------------------- */
+
+        @media (max-width: 991px) {
+
+            .project-sidebar {
+                position: static;
+            }
+
+            .project-image-container {
+                height: 450px;
+            }
+
+            .project-header h2 {
+                font-size: 30px;
+            }
+
+        }
+
+
+        @media (max-width: 767px) {
+
+            .project-image-container {
+                height: 350px;
+                padding: 15px;
+            }
+
+            .project-header h2 {
+                font-size: 27px;
+            }
+
+            .project-info-card {
+                padding: 20px;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+
+            .project-btn {
+                width: 100%;
+            }
+
+            .project-description-section {
+                margin-top: 45px;
+                padding-top: 35px;
+            }
+
+            .description-header h2 {
+                font-size: 26px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .project-image-container {
+                height: 280px;
+            }
+
+            .info-item {
+                gap: 10px;
+            }
+
+            .info-icon {
+                min-width: 38px;
+                height: 38px;
+            }
+
+        }
+
+    </style>
+
+</main>
+
+{% endblock main_content %}
+```
+      
