@@ -27,6 +27,8 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   
   {% block extra_css %}
   {% endblock extra_css %}
@@ -54,6 +56,7 @@
   <!-- Local JavaScript only: no frontend vendor libraries -->
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/send_mail.js' %}"></script>
     
   {% block extra_js %}
   {% endblock extra_js %}

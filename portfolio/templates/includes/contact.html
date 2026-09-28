@@ -1,0 +1,68 @@
+{% load static %}
+<!-- Contact Section -->
+<section id="contact" class="contact section">
+    <!-- Section Title -->
+    <div class="container section-title">
+    <h2>Contact</h2>
+    </div><!-- End Section Title -->
+    <div class="container">
+    <div class="row gy-4">
+        <div class="col-lg-5">
+        <div class="info-wrap">
+            <div class="info-item d-flex">
+            <i class="bi bi-telephone flex-shrink-0"></i>
+            <div>
+                <h3>Call Me</h3>
+                <p>+91 6358918339</p>
+            </div>
+            </div><!-- End Info Item -->
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+            <i class="bi bi-envelope flex-shrink-0"></i>
+            <div>
+                <h3>Email Me</h3>
+                <p>Kumarhasmukh697@gmail.com</p>
+            </div>
+            </div><!-- End Info Item -->
+        </div>
+        </div>
+        <div class="col-lg-7">
+        <form id="contact-form" class="php-email-form">
+            {% csrf_token %}
+            <div class="row gy-4">
+            {% if messages %}
+                <div class="col-md-12" aria-live="polite">
+                {% for message in messages %}
+                    <div class="{% if message.tags == 'success' %}sent-message{% else %}error-message{% endif %}" style="display: block;" role="status">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+            <div class="col-md-6">
+                <label for="name-field" class="pb-2">Your Name</label>
+                <input type="text" name="name" id="name-field" class="form-control" required="">
+            </div>
+            <div class="col-md-6">
+                <label for="email-field" class="pb-2">Your Email</label>
+                <input type="email" class="form-control" name="email" id="email-field" required="">
+            </div>
+            <div class="col-md-12">
+                <label for="subject-field" class="pb-2">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject-field" required="">
+            </div>
+            <div class="col-md-12">
+                <label for="message-field" class="pb-2">Message</label>
+                <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <button type="submit" id="send-message-btn">Send Message</button>
+            </div>
+            </div>
+        </form>
+        </div><!-- End Contact Form -->
+    </div>
+    </div>
+</section>
+<!-- /Contact Section -->

@@ -1,19 +1,10 @@
-import logging
-import smtplib
-
-from django.contrib import messages
-from django.core.exceptions import ValidationError
-from django.core.mail import EmailMessage
-from django.core.validators import validate_email
-from django.conf import settings
-from django.shortcuts import redirect, render
-from django.urls import reverse
-from django.views.decorators.http import require_POST
-
+from django.shortcuts import render
 from .models import Project, ImageGallary
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import JsonResponse
 
 
-logger = logging.getLogger(__name__)
 
 # Create your views here.
 def home(request):
@@ -29,53 +20,44 @@ def portfolio_details(request,id):
 
 
 
-@require_POST
+
+
+
 def send_message(request):
-    name = (request.POST.get('name') or '').strip()
-    from_email = (request.POST.get('email') or '').strip()
-    subject = (request.POST.get('subject') or '').strip()
-    message = (request.POST.get('message') or '').strip()
-    contact_url = f"{reverse('home')}#contact"
 
-    if not all((name, from_email, subject, message)):
-        messages.error(request, 'Please complete all fields before sending your message.')
-        return redirect(contact_url)
+    if request.method != "POST":
+        return JsonResponse({
+            "success": False,
+            "message": "Invalid request method."
+        }, status=405)
 
-    try:
-        validate_email(from_email)
-    except ValidationError:
-        messages.error(request, 'Please enter a valid email address.')
-        return redirect(contact_url)
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    subject = request.POST.get("subject")
+    message = request.POST.get("message")
 
-    if '\r' in subject or '\n' in subject:
-        messages.error(request, 'Please enter a valid subject.')
-        return redirect(contact_url)
-
-    if not settings.EMAIL_HOST or not settings.DEFAULT_FROM_EMAIL:
-        logger.error('Contact email could not be sent: SMTP host or sender is not configured.')
-        messages.error(request, 'Email sending is not configured right now. Please try again later.')
-        return redirect(contact_url)
-
-    full_message = f"From: {name}\nEmail: {from_email}\n\n{message}"
-    email = EmailMessage(
-        subject=subject,
-        body=full_message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        to=['kumarhasmukh697@gmail.com'],
-        reply_to=[from_email],
-    )
+    if not name or not email or not subject or not message:
+        return JsonResponse({
+            "success": False,
+            "message": "Please fill in all fields."
+        }, status=400)
 
     try:
-        sent_count = email.send(fail_silently=False)
-    except (OSError, smtplib.SMTPException):
-        logger.exception('Failed to send contact email.')
-        messages.error(request, 'Your message could not be sent. Please try again later.')
-        return redirect(contact_url)
+        send_mail(
+            subject=subject,
+            message=f"Hello,\n\nName: {name}\nEmail: {email}\n\nMessage:\n{message}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.DEFAULT_FROM_EMAIL],
+            fail_silently=False,
+        )
 
-    if sent_count != 1:
-        logger.error('Contact email backend did not send the message.')
-        messages.error(request, 'Your message could not be sent. Please try again later.')
-        return redirect(contact_url)
+        return JsonResponse({
+            "success": True,
+            "message": "Your message has been sent successfully!"
+        })
 
-    messages.success(request, 'Your message has been sent. Thank you!')
-    return redirect(contact_url)
+    except Exception as e:
+        return JsonResponse({
+            "success": False,
+            "message": "Unable to send your message. Please try again."
+        }, status=500)
