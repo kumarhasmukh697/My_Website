@@ -9,4 +9,4 @@ whitenoise
 psycopg[binary]
 dj-database-url
 cloudinary==1.46.2
-
+requests
