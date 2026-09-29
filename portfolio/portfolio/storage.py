@@ -4,6 +4,8 @@ import posixpath
 import uuid
 
 import cloudinary
+import cloudinary.uploader
+import cloudinary.utils
 import requests
 from django.core.files.base import ContentFile
 from django.core.files.storage import Storage
