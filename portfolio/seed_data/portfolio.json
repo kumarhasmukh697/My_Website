@@ -1,0 +1,78 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Business Data Management",
+      "description": "BDM Capstone Project given by IIT Madras, to do this project we have manually approach the business and find any three problem statement in their business and provided them excel based solution using data provided by that business",
+      "link": "https://kumarhasmukh697.github.io/bdm_capstone_project/",
+      "image": "project_images/bdm-project-image.png",
+      "github_link": "https://github.com/kumarhasmukh697/bdm_capstone_project",
+      "tech_stack": "Excel"
+    },
+    {
+      "id": 2,
+      "title": "FoodHub — Multi-Vendor Food Delivery & Marketplace Platform",
+      "description": "FoodHub is a full-stack multi-vendor food delivery platform designed to connect customers, food vendors, and delivery partners through a single web application. The platform allows customers to discover food, browse vendors and categories, add products to their cart, place orders, make online payments, track deliveries, and manage their profiles.\r\n\r\nVendors have dedicated dashboards where they can manage their restaurants, food categories and menu items, update product availability, receive and process orders, and track order status. Delivery partners can view assigned deliveries, update delivery status, and share their current location for customer tracking.\r\n\r\nThe platform also includes JWT-based API authentication, role-based access control, OTP-based verification, shopping cart and order management, Razorpay payment integration, delivery assignment, Google Maps integration, and an administrative interface.",
+      "link": "https://foodhub.net.in",
+      "image": "project_images/foodhub-multivendor-image.png",
+      "github_link": "https://github.com/kumarhasmukh697/food_marketplace",
+      "tech_stack": "Django, Django REST Framework, PostgreSQL, JavaScript, Tailwind CSS, Redis, Celery, Razorpay, Google Maps API, Nginx, Gunicorn, GitHub Actions, Linode"
+    },
+    {
+      "id": 3,
+      "title": "Click Mart",
+      "description": "A Simple Grocery Store where customer can purchase their required stuff. Application having an authentication System. Here In this Application i have built the backend using Django and Django rest Framework and connect it with the prebuilt frontend and Dockerise the application and deploy the application on the linode server and used the CI/CD pipeline",
+      "link": "https://djangoclickmart.in/",
+      "image": "project_images/click_mart_image_2.png",
+      "github_link": "https://github.com/kumarhasmukh697/Click_Mart_Ecommerce",
+      "tech_stack": "React, Javascript, Django, DRF, Linode, Ngnix, Gunicorn, Docker, GithubActions"
+    }
+  ],
+  "galleries": [
+    {
+      "id": 1,
+      "image": "project_images/ambapati-shop-image_kNCe2o5.png",
+      "project_id": 1
+    },
+    {
+      "id": 2,
+      "image": "project_images/shop-inside-image_VTWByae.png",
+      "project_id": 1
+    },
+    {
+      "id": 3,
+      "image": "project_images/invoice-image_KBYPlaa.png",
+      "project_id": 1
+    },
+    {
+      "id": 4,
+      "image": "project_images/foodhub4.png",
+      "project_id": 2
+    },
+    {
+      "id": 5,
+      "image": "project_images/foodhub2.png",
+      "project_id": 2
+    },
+    {
+      "id": 6,
+      "image": "project_images/foodhub5.png",
+      "project_id": 2
+    },
+    {
+      "id": 7,
+      "image": "project_images/click_mart_image1.png",
+      "project_id": 3
+    },
+    {
+      "id": 8,
+      "image": "project_images/click_mart_image2.png",
+      "project_id": 3
+    },
+    {
+      "id": 9,
+      "image": "project_images/click_mart_image3.png",
+      "project_id": 3
+    }
+  ]
+}
